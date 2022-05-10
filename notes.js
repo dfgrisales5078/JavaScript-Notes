@@ -432,7 +432,7 @@ for (let i = 0 ; i < rapperArray.length; i++) {
 }
 console.log("And if you don't know, now you know.");
 
-*/
+
 
 
 // Loops practice - Whale Talk
@@ -455,9 +455,181 @@ for (let i = 0; i < input.length; i++) {
 
 console.log(resultArray.join().toUpperCase())
 
+*/
+
+// ----------------------- End - Loops ---------------------------
+
+
+
+// ----------------------- Iterators ---------------------------
+
+/*
+// high order functions
+const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
+    for(let i = 1; i <= 1000000; i++) {
+        if ( (2 + 2) != 4) {
+            console.log('Something has gone very wrong :( ');
+        }
+    }
+};
+
+const isTwoPlusTwo = checkThatTwoPlusTwoEqualsFourAMillionTimes;
+//console.log(isTwoPlusTwo.name)
+
+
+// functions as parameters
+const addTwo = num => {
+    return num + 2;
+}
+
+const checkConsistentOutput = (func, val) => {
+    let checkA = val + 2;
+    let checkB = func(val);
+    if (checkA === checkB) {
+        return func(val);
+    }
+    else {
+        return 'inconsistent results';
+    }
+}
+
+console.log(checkConsistentOutput(addTwo, 4));
+*/
+
+// Iterators
+
+// .forEach():
+
+// iterate through each element and print 'I want to eat a fruit'
+const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+fruits.forEach(function (fruitItem) {
+   //console.log('I want to eat a ' + fruitItem)
+});
+
+// using arrow function:
+//fruits.forEach(fruit => console.log('I like ' + fruit));
 
 
 
 
+// .map()
+
+// .map() function: it takes an argument of a callback function and returns a new array
+const animals1 = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus',
+    'rabbit', 'lion', 'dog'];
+
+// Add first letter of each word in animals1 as an element to secretMessage:
+const secretMessage = animals1.map(letter => letter[0]);
+
+// join the elements of secretMessage as one string
+//console.log(secretMessage.join(''));
+
+const bigNumbers = [100, 200, 300, 400, 500];
+
+// Create the smallNumbers1 array below
+const smallNumbers1 = bigNumbers.map(number => {
+    return number / 100;
+})
+
+// ^^ can also be written as:
+// const smallNumbers1 = bigNumbers.map(number => number / 100);
+//console.log(smallNumbers1);
 
 
+
+
+// .filter():
+
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+// Call .filter() on randomNumbers below
+const smallNumbers = randomNumbers.filter(number => number < 250);
+//console.log(smallNumbers)
+
+const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+
+// Call .filter() on favoriteWords below
+const longFavoriteWords = favoriteWords.filter(words => words.length > 7);
+//console.log(longFavoriteWords);
+
+
+
+
+// findIndex():
+
+//.findIndex() will return the index of the first element
+// which evaluates to true for that condition.
+
+const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah',
+    'monkey', 'salamander', 'elephant'];
+
+const foundAnimal = animals.findIndex(animal => animal === 'elephant')
+
+const startsWithS = animals.findIndex(animalS => animalS[0] === 's')
+//console.log(startsWithS)
+
+
+
+
+// reduce()
+
+// returns a single value after iterating
+// through the elements of an array, thereby reducing the array.
+
+const newNumbers = [1, 3, 5, 7];
+
+const newSum = newNumbers.reduce((accumulator, currentValue) => {
+    //console.log('The value of accumulator: ', accumulator);
+    //console.log('The value of currentValue: ', currentValue);
+    return accumulator + currentValue;
+}, 10)
+// ^ accumulator begins at 10
+//console.log(newSum)
+
+
+
+// .some()
+
+const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+// Something is missing in the method call below
+
+console.log(words.some((word) => {
+    return word.length < 6;
+}));
+
+// Use filter to create a new array
+const interestingWords = words.filter(words => words.length > 5);
+
+
+// Make sure to uncomment the code below and fix the incorrect code before running it
+
+console.log(interestingWords.every((word) => {
+    return word.length > 5 ;
+}));
+
+// more iterator practice
+
+const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver',
+    'Eskisehir', 'Medellin', 'Yokohama'];
+
+const nums = [1, 50, 75, 200, 350, 525, 1000];
+
+//  Choose a method that will return undefined - forEach()
+cities.forEach(city => console.log('Have you visited ' + city + '?'));
+
+// Choose a method that will return a new array - filter()
+const longCities = cities.filter(city => city.length > 7);
+
+// Choose a method that will return a single value - reduce()
+const word = cities.reduce((acc, currVal) => {
+    return acc + currVal[0]
+}, "C");
+
+console.log(word)
+
+// Choose a method that will return a new array - map()
+const smallerNums = nums.map(num => num - 5);
+
+// Choose a method that will return a boolean value
+nums.some(num => num < 0);
