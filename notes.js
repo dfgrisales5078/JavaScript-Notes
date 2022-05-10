@@ -360,24 +360,100 @@ console.log(secretMessage.join(' '));
 
 // -------------------------- Loops --------------------------------
 
+/*
+let vacationSpots1 = ['Greece', 'Italy', 'Seattle'];
+
+console.log(vacationSpots1[0]);
+console.log(vacationSpots1[1]);
+console.log(vacationSpots1[2]);
+
+for (let i = 0; i < vacationSpots1.length; i++) {
+    //console.log(vacationSpots1[i]);
+}
+
+//5 6 7 8 9 10
+for (let i = 5; i < 11; i++) {
+    //console.log(i)
+}
+
+//3210
+for (let counter = 3; counter >= 0; counter--){
+    //console.log(counter);
+}
+
+const vacationSpots = ['Bali', 'Paris', 'Tulum'];
+for (let i = 0; i < vacationSpots.length; i++) {
+    //console.log(`I would love to visit ${vacationSpots[i]}`);
+}
+
+// nested for loops
+let bobsFollowers = ['Karla', 'Maddie', 'Belen', 'Angie'];
+let tinasFollowers = ['Karla', 'Maddie', 'Hailey'];
+
+let mutualFollowers = [];
+
+for (let i = 0; i < bobsFollowers.length; i++) {
+    for (let j = 0; j < tinasFollowers.length; j++) {
+        if (bobsFollowers[i] === tinasFollowers[j]) {
+            mutualFollowers.push(bobsFollowers[i]);
+        }
+    }
+}
+
+//console.log(mutualFollowers)
+
+const cards = ['diamond', 'spade', 'heart', 'club'];
+
+let currentCard;
+while (currentCard !== 'spade') {
+                     // get number from 0 to 4
+    currentCard = cards[Math.floor(Math.random() * 4)];
+    console.log(currentCard);
+}
+
+
+let cupsOfSugarNeeded = 5;
+let cupsAdded = 0;
+
+// do while
+do {
+    cupsAdded++;
+    console.log(cupsAdded);
+} while (cupsAdded < cupsOfSugarNeeded);
 
 
 
+const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+for (let i = 0 ; i < rapperArray.length; i++) {
+    console.log(rapperArray[i]);
+    if (rapperArray[i] === 'Notorious B.I.G.') {
+        break;
+    }
+}
+console.log("And if you don't know, now you know.");
+
+*/
 
 
+// Loops practice - Whale Talk
+let input = 'turpentine and turtles';
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+let resultArray = [];
 
+for (let i = 0; i < input.length; i++) {
+    //console.log(i);
+    for (let j = 0; j < vowels.length; j++) {
+        if (input[i] === vowels[j]) {
+            resultArray.push(input[i]);
+            if (input[i] === 'e' || input[i] === 'u') {
+                resultArray.push(input[i]);
+            }
+        }
 
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
+console.log(resultArray.join().toUpperCase())
 
 
 
