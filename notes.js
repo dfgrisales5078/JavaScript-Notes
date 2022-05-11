@@ -757,6 +757,8 @@ delete spaceship2["Secret Mission"];
 
 // object functions
 
+/ Object.assign() can be used to copy all the properties of an object into a new object
+
 let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
 
 // Write your code below
@@ -880,18 +882,228 @@ for (let crewMember in spaceship.crew) {
 
 
 // ---------------------- Advanced Objects -------------------------
+/*
+// The this Keyword
+const robot1 = {
+    model: '1E78V2',
+    energyLevel: 100,
+    provideInfo() {
+        return `I am ${this.model} and my current energy level is ${this.energyLevel}.`;
+    }
+};
+//console.log(robot1.provideInfo());
+
+
+//Arrow Functions and this
+const robot2 = {
+    energyLevel: 100,
+    checkEnergy() {
+        console.log(`Energy is currently at ${this.energyLevel}%.`)
+    }
+}
+//robot2.checkEnergy();
+
+
+//Privacy
+
+// _ before the name of a property to mean that the property should not be altered.
+const robot3 = {
+    _energyLevel: 100,
+    recharge(){
+        this._energyLevel += 30;
+        console.log(`Recharged! Energy is currently at ${this._energyLevel}%.`)
+    }
+};
+
+//console.log(robot3._energyLevel);
+robot3._energyLevel = 'high';
+//robot3.recharge();
+
+
+//Getters
+const robot4 = {
+    _model: '1E78V2',
+    _energyLevel: 100,
+    get energyLevel () {
+        if (typeof(this._energyLevel)){
+            return `My current energy level is ${this._energyLevel}`
+        }
+        else {
+            return 'System malfunction: cannot retrieve energy level';
+        }
+    }
+};
+
+console.log(robot4.energyLevel)
 
 
 
+//Setters
+const robot = {
+    _model: '1E78V2',
+    _energyLevel: 100,
+    _numOfSensors: 15,
+    get numOfSensors(){
+        if(typeof this._numOfSensors === 'number'){
+            return this._numOfSensors;
+        } else {
+            return 'Sensors are currently down.'
+        }
+    },
+    set numOfSensors (num) {
+        if (typeof num === "number" && num >= 0){
+            this._numOfSensors = num;
+        }
+        else {
+            console.log('Pass in a number that is greater than or equal to 0');
+        }
+    }
+
+};
+
+robot.numOfSensors = 100;
+*/
+
+//Factory Functions
+/*
+const robotFactory = (model, mobile) => {
+    return {
+        model: model,
+        mobile: mobile,
+        beep () {
+            console.log('Beep Boop');
+        }
+    }
+}
+
+const tinCan = robotFactory('P-500', true);
+tinCan.beep();
+
+
+//Property Value Shorthand
+function robotFactory(model, mobile){
+    return {
+        model,          // model: model,   <- same functionality
+        mobile,         // mobile: mobile,  <- same functionality
+        beep() {
+            console.log('Beep Boop');
+        }
+    }
+}
+
+// To check that the property value shorthand technique worked:
+const newRobot = robotFactory('P-501', false)
+console.log(newRobot.model)
+console.log(newRobot.mobile)
+
+
+// Destructured Assignment
+const robot = {
+    model: '1E78V2',
+    energyLevel: 100,
+    functionality: {
+        beep() {
+            console.log('Beep Boop');
+        },
+        fireLaser() {
+            console.log('Pew Pew');
+        },
+    }
+};
+
+const { functionality } = robot;
+functionality.beep();
+
+*/
+
+/*
+//Built-in Object Methods
+const robot = {
+    model: 'SAL-1000',
+    mobile: true,
+    sentient: false,
+    armor: 'Steel-plated',
+    energyLevel: 75
+};
+
+// robot object as argument
+const robotKeys = Object.keys(robot);
+
+console.log(robotKeys);
+
+// Declare robotEntries below this line:
+const robotEntries = Object.entries(robot);
+console.log(robotEntries);
+
+// Declare newRobot below this line:   // attributes, object name
+const newRobot = Object.assign({laserBlaster: true, voiceRecognition: true}, robot);
+
+console.log(newRobot);
+*/
 
 
 
+// Objects practice - Meal maker
+/*
+const menu = {
+    _meal: '',
+    _price: 0,
+    set meal (mealToCheck) {
+        if( typeof mealToCheck === 'string') {
+            return this._meal = mealToCheck;
+        }
+    },
+    set price (priceToCheck) {
+        if (typeof priceToCheck === 'number') {
+            return this._price = priceToCheck;
+        }
+    },
+    get todaysSpecial () {
+        if (this._meal && this._price) {
+            return `Today’s Special is ${this._meal} for ${this._price}!`;
+        }
+        else {
+            return 'Meal or price was not set correctly!';
+        }
+    }
+}
 
+menu.meal = 'Pizza';
+menu.price = 10;
+console.log(menu.todaysSpecial);
 
+*/
 
+// object practice - Team Stats
 
+const team = {
+    _players: [{firstName: 'Diego', lastName: 'Grisales', age: 28},
+        {firstName: 'Andres', lastName: 'Gil', age: 30},
+        {firstName: 'Jose', lastName: 'Lopez', age: 31}],
+    _games: [],
+        opponent: {},
+        teamPoints: {},
+        opponentPoints: {},
+    get players () {
+        return this._players;
+    },
+    get games () {
+        return this._games;
+    },
+    addPlayer (newFirstName, newLastName, newAge) {
+        team._players.push({firstName: newFirstName, lastName: newLastName, age: newAge});
+    },
+    addGame (newOpponent, newTeamPoints, newOpponentPoints) {
+        team._games.push({opponent: newOpponent, teamPoints: newTeamPoints,
+            opponentPoints: newOpponentPoints,})
+    }
+}
 
+team.addPlayer('Bugs', 'Bunny', 76);
+console.log(team.players)
 
+team.addGame('Titans', 100, 98);
+console.log(team.games)
 
 
 
