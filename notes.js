@@ -1075,7 +1075,7 @@ console.log(menu.todaysSpecial);
 */
 
 // object practice - Team Stats
-
+/*
 const team = {
     _players: [{firstName: 'Diego', lastName: 'Grisales', age: 28},
         {firstName: 'Andres', lastName: 'Gil', age: 30},
@@ -1105,5 +1105,99 @@ console.log(team.players)
 team.addGame('Titans', 100, 98);
 console.log(team.games)
 
+*/
+
+// ------------------ End - Advanced Objects -------------------
 
 
+
+
+
+// ------------------------- Classes ---------------------------
+
+class Surgeon {
+    constructor(name, department) {
+        this._name = name;
+        this._department = department;
+        this._remainingVacationDays = 20;
+    }
+    get name () {
+        return this._name;
+    }
+    get department () {
+        return this._department;
+    }
+    get remainingVacationDays  () {
+        return this._remainingVacationDays;
+    }
+    takeVacationDays (daysOff) {
+        this._remainingVacationDays = this._remainingVacationDays - daysOff;
+    }
+}
+
+const surgeonRomero = new Surgeon('Francisco Romero', 'Cardiovascular');
+const surgeonJackson = new Surgeon('Ruth Jackson', 'Orthopedics');
+
+//console.log(surgeonRomero.name);
+surgeonRomero.takeVacationDays(3);
+//console.log(surgeonRomero.remainingVacationDays);
+
+class HospitalEmployee {
+    constructor(name) {
+        this._name = name;
+        this._remainingVacationDays = 20;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    get remainingVacationDays() {
+        return this._remainingVacationDays;
+    }
+
+    takeVacationDays(daysOff) {
+        this._remainingVacationDays -= daysOff;
+    }
+    // Static Methods
+    // can call it directly from the class,
+    // but not from an instance of the class:
+    static generatePassword() {
+        return Math.floor(Math.random() * 10000);
+    }
+}
+
+class Nurse extends HospitalEmployee {
+    constructor(name, certifications) {
+        super(name);
+        this._certifications = certifications;
+    }
+
+    get certifications() {
+        return this._certifications;
+    }
+
+    addCertification(newCertification) {
+        this.certifications.push(newCertification);
+    }
+}
+
+class Doctor extends HospitalEmployee {
+    constructor(name, insurance) {
+        super(name);
+        this._insurance = insurance;
+    }
+}
+
+
+const nurseOlynyk = new Nurse("Olynyk", ["Trauma", "Pediatrics"]);
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+nurseOlynyk.addCertification("Genetics");
+console.log(nurseOlynyk.certifications);
+
+
+const doctorBuitrago = new Doctor('Manuela Buitrago', 'Blue');
+console.log(doctorBuitrago.name);
+doctorBuitrago.takeVacationDays(10);
+console.log(doctorBuitrago.remainingVacationDays);
